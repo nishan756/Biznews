@@ -1,6 +1,13 @@
 from django.contrib import admin
 
-from .models import Contact
+from .models import Contact, ContactInfo
+
+
+@admin.register(ContactInfo)
+class ContactInfoAdmin(admin.ModelAdmin):
+
+    list_display = ["phone" , "email" , "location"]
+
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
