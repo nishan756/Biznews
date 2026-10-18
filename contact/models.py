@@ -2,6 +2,19 @@ from django.db import models
 
 import uuid
 
+
+class ContactInfo(models.Model):
+
+    phone = models.CharField(max_length = 15, unique = True)
+
+    email = models.EmailField(unique = True)
+
+    location = models.CharField(max_length = 200)
+
+    class Meta:
+
+        verbose_name_plural = "Contact Infoes"
+
 class Contact(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
 
