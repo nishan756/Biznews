@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SignUp | Biznews
+{% endblock title %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block content %}
+<!-- Signup Form Start -->
+    <div class="container-fluid mt-5 pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="bg-white border border-top-0 p-4 mb-3">
+                        
+                        <h6 class="text-uppercase font-weight-bold mb-3">User Signup</h6>
+                        <form method="POST" action="{% url 'signup' %}">
+
+                            {% csrf_token %}
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.first_name}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.last_name}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.username}}
+
+                                        {% if form.username.errors %}
+                                            {% for error in form.username.errors %}
+                                                <p class="text-danger">{{error}}</p>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.email}}
+
+                                        {% if form.email.errors %}
+                                            {% for error in form.email.errors %}
+                                                <p class="text-danger">{{error}}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.gender}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.image}}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                {{form.date_of_birth}}
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.password}}
+
+                                        {% if form.password.errors %}
+                                            {% for error in form.password.errors %}
+                                                <p class="text-danger">{{error}}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.confirm_password}}
+
+                                        {% if form.confirm_password.errors %}
+                                            {% for error in form.confirm_password.errors %}
+                                                <p class="text-danger">{{error}}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p><a href="{% url 'signup' %}">Forgot password?</a></p>
+
+                                <p><a href="{% url 'login' %}">Already Have An Account?</a></p>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
+                                    type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Signup Form End -->
+{% endblock content %}
